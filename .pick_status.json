@@ -1,5 +1,185 @@
 [
     {
+        "sha": "70dd119abd4481ea3cbe82435bcfb89459c7dd4f",
+        "description": "CI/d3d12: Add a quick_shader run",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "7afb4aba3f1dbb2323a6fe80c25a8b78e9ec5483",
+        "description": "CI/windows: Move reference files to relevant ci subdirectories",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "c70e31c4d5297b3210209dc351151aac95803442",
+        "description": "CI/windows: Move SPIRV-to-DXIL test YML to microsoft folder",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "214168621d4594141c1215b4c21a2c237bf868b4",
+        "description": "CI/windows: Move D3D12 test YML to D3D12 driver folder",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "145b0711fcb494eacdb8917b02d0b9e884621852",
+        "description": "freedreno/crashdec: Basing GMU log decoding",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "8c654d02a3bed0cbee24c545d8fcf709b540aad8",
+        "description": "freedreno/crashdec: Fallback to chip_id for GPU id",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "f33d5256dd15dbbe9ebea9c2efe554f2e595de21",
+        "description": "freedreno/crashdec: HFI queue decoding",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "2133d34b11ada09c1228e0e13a2e4b70b6abd9f7",
+        "description": "freedreno/crashdec: Split out mempool decoding",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "b234c538e8af8e67706a27242981b2d1392c0fe1",
+        "description": "turnip: Move CP_SET_SUBDRAW_SIZE to vkCmdBindPipeline() time.",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "fd11d992546a1e4cd176653ce6c4d6afc2665f9d",
+        "description": "turnip: use SUBDRAW_SIZE and constant sized tess bos",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "3748b8afce91beeaabb71e3f9723bc57b4abf54f",
+        "description": "freedreno/ir3: Make a shared helper for the tess factor stride.",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "17de0841ae70acd23e18586cad517e63cb7471c4",
+        "description": "nouveau/nir: Use natural alignment for scalars",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "698343edc57619de5bb85ce1f208633b96e2fea8",
+        "description": "util/u_trace/perfetto: add new env variable to enable perfetto",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "65697d6141bb17360e31d2eda9931451be46ac12",
+        "description": "util/u_trace: add end_of_pipe property to tracepoints",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "6f54ebe44f7c9dcb52c89684aa160277e1e5ba2c",
+        "description": "glsl: fix for unused variable in glsl_types.cpp",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "4f58cc82e2fcfa7e4633562e2895ba0d75acedbd",
+        "description": "spirv: handle SpvOpMemberName",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "8e568d3f00b31344bc86a7ee1d8e57eb430314a5",
+        "description": "nir/opt_deref: don't try to cast empty structures",
+        "nominated": true,
+        "nomination_type": 0,
+        "resolution": 0,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
+        "sha": "69ec384bbaddc225404943607e12c2be6fe0199f",
+        "description": "gallium/d3d12: Don't use designated initializers",
+        "nominated": false,
+        "nomination_type": 1,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": "8d3a3e7a00b02d3420e15f4793982c3cd5c72a53"
+    },
+    {
+        "sha": "83280b8e23e721cb39f66a4d7cad4fd2d7143045",
+        "description": "microsoft/compiler: Fix dxil_nir_create_bare_samplers()",
+        "nominated": true,
+        "nomination_type": 1,
+        "resolution": 0,
+        "main_sha": null,
+        "because_sha": "46bc7cf6783f184073a123add854c82cc7140d27"
+    },
+    {
+        "sha": "c868bff36a5ef103effe3582933b592747a78065",
+        "description": "freedreno/ci: add piglit runs for a306",
+        "nominated": false,
+        "nomination_type": null,
+        "resolution": 4,
+        "main_sha": null,
+        "because_sha": null
+    },
+    {
         "sha": "1ba231fb75be5bffd806cbd09ac285d1f8f15e3d",
         "description": "android: define cpp_rtti=false because libLLVM is built w/o RTTI (v2)",
         "nominated": true,
