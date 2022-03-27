@@ -24,6 +24,7 @@
 #include "core/program.hpp"
 #include "core/platform.hpp"
 #include "spirv/invocation.hpp"
+#include "llvm/invocation.hpp"
 #include "util/u_debug.h"
 
 #include <limits>
@@ -79,9 +80,6 @@ namespace {
    identify_and_validate_il(const std::string &il,
                             const cl_version opencl_version,
                             const context::notify_action &notify) {
-
-      enum program::il_type il_type = program::il_type::none;
-
 #ifdef HAVE_CLOVER_SPIRV
       if (spirv::is_binary_spirv(il)) {
          std::string log;
@@ -91,11 +89,22 @@ namespace {
             }
             throw error(CL_INVALID_VALUE);
          }
-         il_type = program::il_type::spirv;
+         return program::il_type::spirv;
       }
 #endif
 
-      return il_type;
+      if (llvm::is_binary_llvm(il)) {
+         std::string log;
+         if (!llvm::is_valid_llvm(il, opencl_version, log)) {
+            if (notify) {
+               notify(log.c_str());
+            }
+            throw error(CL_INVALID_VALUE);
+         }
+         return program::il_type::llvm;
+      }
+
+      return program::il_type::none;
    }
 }
 

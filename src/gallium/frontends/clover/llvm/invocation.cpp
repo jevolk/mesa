@@ -33,6 +33,7 @@
 #ifdef HAVE_CLOVER_SPIRV
 #include <LLVMSPIRVLib/LLVMSPIRVLib.h>
 #endif
+#include <llvm/IRReader/IRReader.h>
 
 #include <clang/CodeGen/CodeGenAction.h>
 #include <clang/Lex/PreprocessorOptions.h>
@@ -540,3 +541,57 @@ clover::llvm::compile_to_spirv(const std::string &source,
    return spirv::compile_program(binary, dev, r_log);
 }
 #endif
+
+bool
+clover::llvm::is_binary_llvm(const std::string &binary)
+{
+   if (binary.size() < 4)
+      return false;
+
+   if (binary[0] != 'B' || binary[1] != 'C')
+      return false;
+
+   return true;
+}
+
+bool
+clover::llvm::is_valid_llvm(const std::string &binary,
+                            const cl_version version,
+                            std::string &r_log)
+{
+   ::llvm::SMDiagnostic err;
+   auto ctx = create_context(r_log);
+   auto buf = ::llvm::MemoryBuffer::getMemBuffer(binary);
+   auto mod = ::llvm::parseIR(*buf, err, *ctx);
+   if (!mod) {
+      r_log += "Parsing LLVM IR failed: " + err.getMessage().str() + "\n";
+      return false;
+   }
+
+   const auto convert = [](const ::llvm::Metadata *md) {
+      std::string buf;
+      ::llvm::raw_string_ostream str(buf);
+      md->print(str);
+      buf = str.str().substr(4); // skip "i32 " prefix
+      return std::atoi(buf.c_str());
+   };
+
+   unsigned major = 0, minor = 0;
+   const auto ocl_version = mod->getNamedMetadata("opencl.ocl.version");
+   if (ocl_version) {
+      for (const auto &node : ocl_version->operands()) {
+         if (node->getNumOperands() > 0)
+            major = convert(node->getOperand(0));
+         if (node->getNumOperands() > 1)
+            minor = convert(node->getOperand(1));
+      }
+   }
+
+   if (major == 0 || major > CL_VERSION_MAJOR(version) ||
+      (major == CL_VERSION_MAJOR(version) && minor > CL_VERSION_MINOR(version))) {
+      r_log += "LLVM IR targets an unsupported opencl version.\n";
+      return false;
+   }
+
+   return true;
+}
