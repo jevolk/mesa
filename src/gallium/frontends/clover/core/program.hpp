@@ -38,7 +38,7 @@ namespace clover {
          evals, const std::vector<intrusive_ref<device>> &> device_range;
 
    public:
-      enum class il_type { none, source, spirv };
+      enum class il_type { none, source, spirv, llvm };
 
       program(clover::context &ctx,
               std::string &&il,

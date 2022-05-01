@@ -48,6 +48,15 @@ namespace clover {
                               const std::string &opts,
                               std::string &r_log);
 #endif
+
+      // Returns whether the binary starts with the LLVM-IR magic number.
+      bool is_binary_llvm(const std::string &binary);
+
+      // Returns whether the binary is considered valid for the given
+      // OpenCL version.
+      bool is_valid_llvm(const std::string &binary,
+                         const cl_version opencl_version,
+                         std::string &r_log);
    }
 }
 

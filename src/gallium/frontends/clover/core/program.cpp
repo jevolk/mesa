@@ -29,6 +29,16 @@ program::program(clover::context &ctx, std::string &&source,
                  enum il_type il_type) :
    context(ctx), _devices(ctx.devices()), _source(std::move(source)),
    _kernel_ref_counter(0), _il_type(il_type) {
+
+   if (il_type == il_type::llvm) {
+      for (device &dev : _devices) {
+         binary b;
+         b.secs.emplace_back(0, binary::section::text_intermediate, _source.size(),
+                             std::vector<char>(_source.begin(), _source.end()));
+
+         _builds[&dev] = { b };
+      }
+   }
 }
 
 program::program(clover::context &ctx,
